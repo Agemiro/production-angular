@@ -9,6 +9,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "serve:json": "json-server server/db.json",
     "serve:api": "nx run api:serve",
     "serve:web": "ng serve --open",
     "serve:all": "concurrently \"npm run serve:api\" \"npm run serve:web\"",
@@ -48,6 +49,8 @@
     "@ngrx/store": "10.0.1",
     "@nrwl/angular": "10.3.2",
     "concurrently": "^8.2.0",
+    "json-serve": "^0.1.0",
+    "json-server": "^0.17.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
