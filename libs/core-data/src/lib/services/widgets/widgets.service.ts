@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Widget } from '../../../../../api-interfaces/src/lib/api-interfaces';
-const API = 'http://localhost:3000';
+const API = 'http://localhost:3000/';
 
 @Injectable({
   providedIn: 'root',
