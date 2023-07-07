@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Widget } from '../../../../../api-interfaces/src/lib/api-interfaces';
-const API = 'http://localhost:3000/';
+import { Injectable } from '@angular/core';
+import { environment } from '@env/environment';
+import { Widget } from '@fem/api-interfaces';
+
+// Json Server address, when it was used.
+// const API = 'http://localhost:3000/';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +35,7 @@ export class WidgetsService {
   }
 
   private getUrl() {
-    return `${API}${this.model}`;
+    return `${environment.apiEndpoint}${this.model}`;
   }
 
   private getUrlWithId(id: string) {

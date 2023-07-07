@@ -2,7 +2,6 @@
   (toggleSideNav)="toggleSideNav()"
   (logout)="logout()"
 ></fem-toolbar>
-
-<pre>
-  <p>{{ widgets$ | async | json }}</p>
-</pre>
+<mat-card *ngFor="let widget of widgets$ | async">
+  <p>{{ widget.title }}</p>
+</mat-card>

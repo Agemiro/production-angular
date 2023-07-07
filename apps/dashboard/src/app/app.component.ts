@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@fem/api-interfaces';
+import { Component } from '@angular/core';
+import { Widget } from '@fem/api-interfaces';
 
 @Component({
   selector: 'fem-root',
@@ -8,6 +8,10 @@ import { Message } from '@fem/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  widgets$ = this.http.get<Widget[]>('/api/widgets');
+
   constructor(private http: HttpClient) {}
+
+  toggleSideNav() {}
+  logout() {}
 }
