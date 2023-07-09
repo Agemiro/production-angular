@@ -8,9 +8,10 @@ import { Widget } from '@fem/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  widgets$ = this.http.get<Widget[]>('/api/widgets');
-
-  constructor(private http: HttpClient) {}
+  links = [
+    { path: '/', icon: 'home', title: 'home' },
+    { path: '/widgets', icon: 'view_list', title: 'widgets' },
+  ];
 
   toggleSideNav() {}
   logout() {}
