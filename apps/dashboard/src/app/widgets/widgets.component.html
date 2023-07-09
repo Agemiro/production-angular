@@ -9,7 +9,7 @@
   </div>
   <div class="details-component">
     <fem-widget-details
-      [widget]="selectedWidget"
+      [widget]="selectedWidget$ | async"
       (saved)="saveWidget($event)"
       (cancelled)="resetForm()"
     >
