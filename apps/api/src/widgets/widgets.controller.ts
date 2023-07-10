@@ -5,10 +5,9 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
   Post,
+  Put,
 } from '@nestjs/common';
-
 import { WidgetsService } from './widgets.service';
 
 @Controller('widgets')
@@ -30,7 +29,7 @@ export class WidgetsController {
     return this.widgetsService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() widget: Widget) {
     return this.widgetsService.update(id, widget);
   }

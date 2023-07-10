@@ -66,7 +66,7 @@ describe('WidgetsFacade', () => {
      */
     it('loadAll() should return empty list with loaded == true', async (done) => {
       try {
-        let list = await readFirst(facade.allWidgets$);
+        let list = await readFirst(facade.widgets$);
         let isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(0);
@@ -74,7 +74,7 @@ describe('WidgetsFacade', () => {
 
         facade.dispatch(WidgetsActions.loadWidgets());
 
-        list = await readFirst(facade.allWidgets$);
+        list = await readFirst(facade.widgets$);
         isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(0);
@@ -91,7 +91,7 @@ describe('WidgetsFacade', () => {
      */
     it('allWidgets$ should return the loaded list; and loaded flag == true', async (done) => {
       try {
-        let list = await readFirst(facade.allWidgets$);
+        let list = await readFirst(facade.widgets$);
         let isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(0);
@@ -103,7 +103,7 @@ describe('WidgetsFacade', () => {
           })
         );
 
-        list = await readFirst(facade.allWidgets$);
+        list = await readFirst(facade.widgets$);
         isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(2);

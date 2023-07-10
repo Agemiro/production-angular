@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Widget } from '@fem/api-interfaces';
-import { WidgetsService } from '@fem/core-data';
 import { WidgetsFacade } from '@fem/core-state';
 import { Observable } from 'rxjs';
-
-const emptyWidget: Widget = {
-  id: null,
-  title: '',
-  description: '',
-};
 
 @Component({
   selector: 'fem-widgets',
@@ -18,12 +11,12 @@ const emptyWidget: Widget = {
 export class WidgetsComponent implements OnInit {
   widgets$: Observable<Widget[]> = this.widgetsFacade.widgets$;
   selectedWidget$: Observable<Widget> = this.widgetsFacade.selectedWidget$;
-  constructor(private widgetsFacade: WidgetsFacade) {
-    this.loadWidgets();
-  }
+
+  constructor(private widgetsFacade: WidgetsFacade) {}
 
   ngOnInit(): void {
     this.reset();
+    this.widgetsFacade.mutations$.subscribe((_) => this.reset());
   }
 
   reset() {
@@ -32,39 +25,22 @@ export class WidgetsComponent implements OnInit {
   }
 
   resetForm() {
-    // this.selectedWidget$ = emptyWidget;
-    this.selectWidget(emptyWidget);
+    this.selectWidget(null);
+  }
+
+  selectWidget(widget: Widget) {
+    this.widgetsFacade.selectWidget(widget?.id);
   }
 
   loadWidgets() {
     this.widgetsFacade.loadWidgets();
   }
 
-  selectWidget(widget: Widget) {
-    this.widgetsFacade.selectWidget(widget);
-  }
-
   saveWidget(widget: Widget) {
-    console.log('Tentou salvar');
-    if (widget.id) {
-      this.updateteWidget(widget);
-    } else {
-      this.createWidget(widget);
-    }
-  }
-
-  createWidget(widget: Widget) {
-    // this.widgetsService.create(widget);
-    this.resetForm();
-  }
-
-  updateteWidget(widget: Widget) {
-    // this.widgetsService.update(widget);
-    this.resetForm();
+    this.widgetsFacade.saveWidget(widget);
   }
 
   deleteWidget(widget: Widget) {
-    //this.widgetsService.delete(widget);
-    this.resetForm();
+    this.widgetsFacade.deleteWidget(widget);
   }
 }

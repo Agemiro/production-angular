@@ -7,7 +7,6 @@ import { CoreDataModule } from '@fem/core-data';
 import { CoreStateModule } from '@fem/core-state';
 import { MaterialModule } from '@fem/material';
 import { UiToolbarModule } from '@fem/ui-toolbar';
-import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -28,7 +27,6 @@ import { WidgetsComponent } from './widgets/widgets.component';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
     CoreDataModule,
     CoreStateModule,
     MaterialModule,
