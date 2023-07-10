@@ -37,21 +37,19 @@ Below are our core plugins:
 
 There are also many [community plugins](https://nx.dev/nx-community) you could add.
 
-## Generate an application
+## Web: Getting Started
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+```
+npm run serve:all
+```
 
-> You can use any of the plugins above to generate applications as well.
+The `serve:all` command is a convenience methods that runs the `serve:api` and `serve:web` commands concurrently. You can run each command separately if you need to.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@production-angular/mylib`.
+```
+"serve:api": "nx run api:serve",
+"serve:web": "ng serve --open",
+"serve:all": "concurrently \"npm run serve:api\" \"npm run serve:web\""
+```
 
 ## Development server
 
