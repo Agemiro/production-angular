@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>
+  <mat-card-title data-cy="widget-details-title">
     <span *ngIf="currentWidget.id; else elseBlock">
       Editing {{ originalTitle }}
     </span>
@@ -7,7 +7,11 @@
       Select Widget
     </ng-template>
   </mat-card-title>
-  <form #form="ngForm" (submit)="saved.emit(currentWidget)">
+  <form
+    #form="ngForm"
+    (submit)="saved.emit(currentWidget)"
+    data-cy="widget-form"
+  >
     <mat-card-content>
       <mat-form-field class="full-width">
         <input
@@ -17,6 +21,7 @@
           type="text"
           name="title"
           required
+          data-cy="widget-form-title"
         />
       </mat-form-field>
       <mat-form-field class="full-width">
@@ -27,6 +32,7 @@
           type="text"
           name="description"
           required
+          data-cy="widget-form-description"
         />
       </mat-form-field>
     </mat-card-content>
@@ -36,10 +42,16 @@
         type="submit"
         mat-button
         color="primary"
+        data-cy="widget-form-save"
       >
         Save
       </button>
-      <button type="button" mat-button (click)="form.reset(); cancelled.emit()">
+      <button
+        type="button"
+        mat-button
+        (click)="form.reset(); cancelled.emit()"
+        data-cy="widget-form-cancel"
+      >
         Cancel
       </button>
     </mat-card-actions>

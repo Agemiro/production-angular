@@ -3,19 +3,23 @@
     Widgets
   </mat-card-title>
   <mat-card-content>
-    <mat-list>
+    <mat-list data-cy="widgets-list">
       <mat-list-item
         *ngFor="let widget of widgets"
         class="mat-list-option"
         (click)="selected.emit(widget)"
+        attr.data-cy="widget-{{ widget.id }}-item"
       >
-        <span matLine>{{ widget.title }}</span>
+        <span matLine attr.data-cy="widget-{{ widget.id }}-item-title">{{
+          widget.title
+        }}</span>
         <button
           *ngIf="!readonly"
           mat-icon-button
           type="button"
           color="warn"
           (click)="deleted.emit(widget); $event.stopImmediatePropagation()"
+          attr.data-cy="delete-widget-{{ widget.id }}-btn"
         >
           <mat-icon>clear</mat-icon>
         </button>

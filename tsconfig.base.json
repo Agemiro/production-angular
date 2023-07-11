@@ -21,7 +21,8 @@
       "@fem/core-state": ["libs/core-state/src/index.ts"],
       "@fem/material": ["libs/material/src/index.ts"],
       "@fem/ui-toolbar": ["libs/ui-toolbar/src/index.ts"],
-      "@env/*": ["apps/dashboard/src/environments/*"]
+      "@env/*": ["apps/dashboard/src/environments/*"],
+      "@fem/testing": ["libs/testing/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
